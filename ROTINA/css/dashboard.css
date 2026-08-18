@@ -1,0 +1,272 @@
+/* dashboard.css — Dashboard-specific layout and cards */
+
+/* ── Dashboard grid ── */
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* ── Dashboard Header ── */
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-2);
+}
+
+.dash-greeting {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+}
+
+.dash-date {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.dash-phrase {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  margin-top: var(--space-2);
+  font-style: italic;
+}
+
+.dash-header-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* ── Two-column rows ── */
+.dash-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+/* ── NOW card ── */
+.now-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.now-active {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--surface), rgba(124,109,250,0.04));
+}
+
+.now-time {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+}
+
+.now-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.now-category {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.now-subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.now-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.now-progress .progress-bar {
+  flex: 1;
+  height: 6px;
+}
+
+.progress-text {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  min-width: 32px;
+  font-weight: var(--weight-semibold);
+}
+
+.now-break .now-title {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+}
+
+.now-free .now-title {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+}
+
+/* ── NEXT card ── */
+.next-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--surface-2);
+}
+
+.next-time {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+}
+
+.next-title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.next-countdown {
+  font-size: var(--text-sm);
+  color: var(--primary);
+  font-weight: var(--weight-medium);
+}
+
+/* ── TODAY timeline card ── */
+.today-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 54px;
+  top: 16px;
+  bottom: 16px;
+  width: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius);
+  position: relative;
+  transition: background 0.1s;
+}
+
+.timeline-item:hover { background: var(--surface-2); }
+
+.timeline-time {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  min-width: 38px;
+  text-align: right;
+  font-weight: var(--weight-medium);
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--border);
+  transition: all 0.2s;
+}
+
+.timeline-item.current .timeline-dot {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-dim);
+}
+
+.timeline-item.past .timeline-dot {
+  background: var(--text-tertiary);
+  border-color: var(--text-tertiary);
+}
+
+.timeline-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-emoji {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.timeline-title {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeline-end {
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.timeline-item.past .timeline-title {
+  color: var(--text-tertiary);
+}
+
+.timeline-item.current {
+  background: var(--primary-dim);
+}
+
+.timeline-item.current .timeline-title {
+  color: var(--primary);
+  font-weight: var(--weight-semibold);
+}
+
+/* ── Tasks today card ── */
+.tasks-today-card {
+  display: flex;
+  flex-direction: column;
+  max-height: 480px;
+  overflow-y: auto;
+}

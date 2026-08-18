@@ -1,0 +1,331 @@
+/* responsive.css — Breakpoints and mobile adaptations */
+
+/* ── Tablet (max 1024px) ── */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-w: 200px;
+  }
+
+  .page-content {
+    padding: var(--space-6) var(--space-6);
+  }
+
+  .dash-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .studies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
+/* ── Mobile (max 768px) ── */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-w: 0px;
+  }
+
+  /* Hide sidebar, show bottom nav */
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding-bottom: 72px; /* space for bottom nav */
+  }
+
+  .page-content {
+    padding: var(--space-5) var(--space-4);
+    padding-bottom: var(--space-8);
+  }
+
+  /* Bottom Navigation */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    z-index: 100;
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    padding: 0 var(--space-2) env(safe-area-inset-bottom, 0px);
+    align-items: center;
+    justify-content: space-around;
+    gap: 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    flex: 1;
+    padding: var(--space-1) 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text-tertiary);
+    font-family: var(--font);
+    transition: color 0.15s;
+    min-height: 48px;
+    min-width: 44px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bottom-nav-item.active {
+    color: var(--primary);
+    font-weight: var(--weight-semibold);
+  }
+
+  .bottom-nav-icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .bottom-nav-label {
+    font-size: 11px;
+    font-weight: var(--weight-medium);
+    line-height: 1.1;
+  }
+
+  /* Touch target sizes (>= 44px) on mobile */
+  .btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-sm {
+    min-height: 38px;
+  }
+
+  .input, select, textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+    min-height: 44px;
+  }
+
+  .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .task-check {
+    width: 22px;
+    height: 22px;
+    position: relative;
+  }
+
+  .task-check::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Dashboard header */
+  .dash-header {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .dash-greeting {
+    font-size: var(--text-2xl);
+  }
+
+  .dash-header-actions {
+    width: 100%;
+  }
+
+  .dash-header-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Cards */
+  .now-title {
+    font-size: var(--text-xl);
+  }
+
+  .dash-row-2 {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* Timeline */
+  .today-card {
+    max-height: none;
+  }
+
+  .timeline::before {
+    left: 50px;
+  }
+
+  /* Tasks today */
+  .tasks-today-card {
+    max-height: none;
+  }
+
+  /* Schedule */
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Studies */
+  .studies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Disciplines */
+  .disciplines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Method grid */
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Priority rules */
+  .priority-rules {
+    grid-template-columns: 1fr;
+  }
+
+  /* Form rows */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modal */
+  .modal {
+    max-height: 95vh;
+    margin: 0;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+
+  #modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  /* Week stats */
+  .week-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Week area label */
+  .week-area-label {
+    min-width: 100px;
+  }
+
+  /* Toast */
+  .toast {
+    bottom: 80px;
+    right: var(--space-4);
+    left: var(--space-4);
+    text-align: center;
+  }
+
+  /* Page header */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: var(--space-2);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-btn {
+    flex-shrink: 0;
+  }
+
+  /* Session row */
+  .session-row {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .session-area {
+    min-width: auto;
+  }
+
+  /* Timer */
+  .timer-presets {
+    justify-content: center;
+  }
+}
+
+/* ── Very small mobile (max 400px) ── */
+@media (max-width: 400px) {
+  .dash-greeting {
+    font-size: var(--text-xl);
+  }
+
+  .week-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .now-title {
+    font-size: var(--text-lg);
+  }
+
+  .bottom-nav-label {
+    display: none;
+  }
+
+  .bottom-nav-icon {
+    font-size: 22px;
+  }
+}
+
+/* ── Desktop only: show bottom nav hidden ── */
+@media (min-width: 769px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* ── High contrast / reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
